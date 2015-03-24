@@ -1,0 +1,37 @@
+Périmètre de la réalisation 
+Vous devez gérer la commande en ligne sur un catalogue existant  MAIS on ne demande pas la gestion du catalogue ni des stocks, ni du paiement en ligne.
+ 
+
+Fonctionnalités attendues
+L'utilisateur final pourra naviguer entre catégories de produits et choisir un produit pour le mettre dans son panier (on choisira de placer plutot le panier en variable de session, mais la solution qu'il soit dans la base est aussi possible).
+
+Lors de la mise en panier du produit ou lors de la commande finale, il pourra ajuster le nombre d'exemplaires du(des) produit(s) choisi(s).
+
+A la visualisation de la commande, le montant de chaque ligne sera affiché, ainsi que le montant total et le prix du transport.
+
+Un utilisateur finale pourra s'inscrire en renseignant les coordonnées usuelles pour la livraison et la facturation. Son login sera son adresse électronque. Son mot de passe devra être crypté dans la base.
+
+Pour payer, l'acheteur devra "se connecter", à son compte (ses paramètres de connexion seront stockés en variable de session).
+
+On ne demande pas de gestion du catalogue, ni le traitement du paiement.
+ 
+
+Tutorat sur ce projet tutoré
+J'attends de vous des questions soit sur le tème soit sur les techniques à employer. Nous pourrons construire ensemble des parties de code selon vos propositions que ce soit du php ou du html/css ou même du JavaScript.
+ 
+
+Base de données
+
+Une base de données vous est proposée en pièce jointe, elle vous guidera dans la compréhension du problème 
+ 
+
+Approche Objet
+Il faut privilégier une approche objet.
+Le panier sera un objet qui circulera par les variables de session.
+Le client sera aussi un objet
+La connexion sera traité comme un objet
+
+Templates
+On structura la page "entete" - "sidebar" - "content" par des fichiers php autonomes qui seront appelés par des 'include' ou des 'require'.
+
+Ainsi, l'entete sera toujours la même, le content variera suivant l'action demandée en chargeant un fichier .php dépendant de cette action.
