@@ -21,7 +21,7 @@ class Client extends SQLObject
     
     function reset ()
     {
-        $this->set(null, 0, "", 0, "", "", 0);
+        $this->set(null, 0, "", "", "", "");
         $this->categorie = null;
     }
     function set ($session, $fid, $fnom, $fprix, $fimg, $fdesc, $fcat)
