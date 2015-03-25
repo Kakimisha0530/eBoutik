@@ -1,23 +1,22 @@
 <?php
-class Article extends SQLObject
+class Client extends SQLObject
 {
     var $nom;
-    var $prix;
-    var $image;
-    var $description;
-    var $id_categorie;
-    var $categorie;
+    var $prenom;
+    var $mail;
+    var $code;
+    var $adresses;        
     
     
     function __construct ()
     {
-        parent::__construct("articles");
-        $this->categorie = null;
+        parent::__construct("clients");
+        $this->adresses = array();
     }
     
     function size ()
     {
-        return parent::size() + 5;
+        return parent::size() + 4;
     }
     
     function reset ()
