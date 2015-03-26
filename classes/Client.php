@@ -22,28 +22,31 @@ class Client extends SQLObject
     function reset ()
     {
         $this->set(null, 0, "", "", "", "");
-        $this->categorie = null;
+        $this->adresses = array();
     }
-    function set ($session, $fid, $fnom, $fprix, $fimg, $fdesc, $fcat)
+    
+    function set ($session, $fid, $fnom, $fpre, $fmai, $fcode)
     {
         $this->id = intval($fid);
         $this->nom = $fnom;
-        $this->prix = floatval($fprix);
-        $this->image = $fimg;
-        $this->description = $fdesc;
-        $this->id_categorie = intval($fcat);
-        if ($this->id_categorie > 0 && $session != null) {
-            $this->categorie = new Categorie();
-            $this->categorie->getById($session, $this->id_categorie);
+        $this->prenom = $fprix;
+        $this->mail = $fmai;
+        $this->setCode($fcode);
+        if ($this->id > 0 && $session != null) {
+            $addr = new Adresse();
+            $this->adresses = $addr->getAllForUser($session, $this->id);
         }
     }
     
     function setFromDB ($session, $row)
     {
-        $this->set($session, $row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
+        $this->set($session, $row[0], $row[1], $row[2], $row[3], $row[4]);
         
     }
     
+    function setCode($str){
+        $this->code = md5($str);
+    }
     
     function save ($session)
     {
@@ -54,10 +57,9 @@ class Client extends SQLObject
             $query .= "INSERT INTO " . $this->table . " SET ";
         
         $query .= createQueryString("nom", $this->nom);
-        $query .= createQueryString("description", $this->description);
-        $query .= createQueryString("image", $this->image);
-        $query .= createQueryInt("prix", $this->prix);
-        $query .= createQueryInt("categorie", $this->id_categorie);
+        $query .= createQueryString("prenom", $this->prenom);
+        $query .= createQueryString("mail", $this->mail);
+        $query .= createQueryString("code", $this->code);
         
         $query = trim($query, ", ");
         
